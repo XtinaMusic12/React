@@ -26,16 +26,18 @@ class DishDetail extends Component {
         return (
           <div key={comment.id} className="col-12 col-md-5 m-1">
             <Card>
-              <li>{comment.comment}</li>
-              <li>
-                {comment.author} - {comment.date}
-              </li>
+              <ul>
+                <li>{comment.comment}</li>
+                <li>
+                  {comment.author} - {comment.date}
+                </li>
+              </ul>
             </Card>
           </div>
         );
       });
       return (
-        <div classeName="col-12 col-md-5 m-1">
+        <div className="col-12 col-md-5 m-1">
           <h4>Comments</h4>
           {commentDisplay}
         </div>
@@ -47,8 +49,8 @@ class DishDetail extends Component {
     if (this.props.dish != null) {
       return (
         <div className="row">
-          {this.renderDish(this.props.dish)};
-          {this.renderComments(this.props.dish.comments)};
+          {this.renderDish(this.props.dish)}
+          {this.renderComments(this.props.dish.comments)}
         </div>
       );
     } else return <div />;
