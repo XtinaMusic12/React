@@ -24,7 +24,7 @@ class DishDetail extends Component {
     if (comments != null) {
       const commentDisplay = comments.map(comment => {
         return (
-          <div key={comment.id} className="col-12 col-md-5 m-1">
+          <div key={comment.id}>
             <Card>
               <ul>
                 <li>{comment.comment}</li>
