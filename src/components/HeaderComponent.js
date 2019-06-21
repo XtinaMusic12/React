@@ -21,7 +21,7 @@ import { NavLink } from "react-router-dom";
 class Header extends Component {
   constructor(props) {
     super(props);
-
+// is bind(this) here or below??
     this.state = {
       isNavOpen: false,
       isModalOpen: false
