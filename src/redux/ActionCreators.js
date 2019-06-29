@@ -201,7 +201,37 @@ export const addLeaders = leaders => ({
   payload: leaders
 });
 
-export const postFeedback = feedback => ({
-  type: ActionTypes.POST_FEEDBACK,
-  payload: feedback
-});
+export const postFeedback = feedback => dispatch => {
+  return fetch(baseUrl + "feedback", {
+    method: "POST",
+    body: JSON.stringify(feedback),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "same-origin"
+  })
+    .then(
+      response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error " + response.status + ": " + response.statusText
+          );
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+        throw error;
+      }
+    )
+    .then(response => response.json())
+    .then(response => {
+      alert("Thank you for your feedback " + response);
+    })
+    .catch(error => {
+      console.log("sent feedback", error.message);
+      alert("Your message could not be sent\nError: " + error.message);
+    });
+};
