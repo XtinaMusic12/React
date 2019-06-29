@@ -12,7 +12,8 @@ import {
   postComment,
   fetchDishes,
   fetchComments,
-  fetchPromos
+  fetchPromos,
+  fetchLeaders
 } from "../redux/ActionCreators";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { actions } from "react-redux-form";
@@ -34,7 +35,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.reset("feedback"));
   },
   fetchComments: () => dispatch(fetchComments()),
-  fetchPromos: () => dispatch(fetchPromos())
+  fetchPromos: () => dispatch(fetchPromos()),
+  fetchLeaders: () => dispatch(fetchLeaders())
 });
 
 class Main extends Component {
@@ -42,6 +44,7 @@ class Main extends Component {
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
+    this.props.fetchLeaders();
   }
 
   render() {
