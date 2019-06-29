@@ -20,8 +20,8 @@ export const Promotions = (
       return {
         ...state,
         isLoading: false,
-        errMess: action.payload,
-        promotions: []
+        errMess: action.payload
+        // promotions: []
       };
 
     default:

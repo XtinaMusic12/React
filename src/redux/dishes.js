@@ -20,8 +20,8 @@ export const Dishes = (
       return {
         ...state,
         isLoading: false,
-        errMess: action.payload,
-        dishes: []
+        errMess: action.payload
+        // dishes: []
       };
 
     default:

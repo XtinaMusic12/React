@@ -1,5 +1,4 @@
 import * as ActionTypes from "./ActionTypes";
-import { DISHES } from "../shared/dishes";
 import { baseUrl } from "../shared/baseUrl";
 
 export const addComment = (dishId, rating, author, comment) => ({
@@ -35,8 +34,6 @@ export const addDishes = dishes => ({
 });
 
 export const fetchComments = () => dispatch => {
-  dispatch(dishesLoading(true));
-
   return fetch(baseUrl + "comments")
     .then(response => response.json())
     .then(comments => dispatch(addComments(comments)));

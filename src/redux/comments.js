@@ -19,8 +19,8 @@ export const Comments = (
       return {
         ...state,
         isLoading: false,
-        errMess: action.payload,
-        comments: []
+        errMess: action.payload
+        // comments: []
       };
     case ActionTypes.ADD_COMMENT:
       var comment = action.payload;
