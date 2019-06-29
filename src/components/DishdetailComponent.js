@@ -47,37 +47,39 @@ function RenderDish({ dish }) {
 }
 
 function RenderComments({ comments, postComment, dishId }) {
-  if (comments != null) {
-    const commentDisplay = comments.map(comment => {
-      return (
-        <Fade in>
-          <li key={comment.id}>
-            <p>{comment.comment}</p>
-            <p>
-              -- {comment.author} -
-              {new Intl.DateTimeFormat("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "2-digit"
-              }).format(new Date(Date.parse(comment.date)))}
-            </p>
-          </li>
-        </Fade>
-      );
-    });
+  var commentList = comments.map(comment => {
     return (
-      <div className="col-12 col-md-5 m-1">
-        <h4>Comments</h4>
-        <ul className="list-unstyled">
-          <Stagger in>{commentDisplay}</Stagger>
-        </ul>
-        <CommentForm dishId={dishId} postComment={postComment} />
-      </div>
+      <Fade in>
+        <li key={comment.id}>
+          {comment.comment}
+          <br />
+          <br />
+          -- {comment.author},{" "}
+          {new Intl.DateTimeFormat("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "2-digit"
+          }).format(new Date(Date.parse(comment.date)))}
+          <br />
+          <br />
+        </li>
+      </Fade>
     );
-  } else return <div />;
+  });
+
+  return (
+    <div>
+      <h4>Comments</h4>
+      <ul className="list-unstyled">
+        <Stagger in>{commentList}</Stagger>
+      </ul>
+      <CommentForm dishId={dishId} postComment={postComment} />
+    </div>
+  );
 }
 
 const DishDetail = props => {
+  console.log("dishdetail", props);
   if (props.isLoading) {
     return (
       <div className="container">
@@ -136,17 +138,17 @@ class CommentForm extends Component {
       isModalOpen: !this.state.isModalOpen
     });
 
-  handleSubmit(values) {
-    this.toggleModal();
+  handleSubmit = values =>
+    // this.toggleModal();
     this.props.postComment(
       this.props.dishId,
       values.rating,
       values.author,
       values.comment
     );
-  }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Button
