@@ -225,7 +225,7 @@ class CommentForm extends Component {
                   </Button>
                 </Col>
               </Row>
-            </LocalForm>{" "}
+            </LocalForm>
           </ModalBody>
         </Modal>
       </div>

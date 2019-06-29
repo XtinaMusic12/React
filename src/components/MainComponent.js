@@ -101,7 +101,13 @@ class Main extends Component {
                 render={() => <Menu dishes={this.props.dishes} />}
               />
               <Route path="/menu/:dishId" component={DishWithId} />
-              <Route exact path="/contactus" component={Contact} />
+              <Route
+                exact
+                path="/contactus"
+                render={() => (
+                  <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+                )}
+              />
               <Redirect to="/home" />
             </Switch>
           </CSSTransition>
