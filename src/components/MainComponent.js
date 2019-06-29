@@ -14,6 +14,7 @@ import {
   fetchComments,
   fetchPromos
 } from "../redux/ActionCreators";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const mapStateToProps = state => ({
   dishes: state.dishes,
@@ -83,21 +84,29 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route path="/home" component={HomePage} />
-          <Route
-            path="/aboutus"
-            render={() => <About leaders={this.props.leaders} />}
-          />
-          <Route
-            exact
-            path="/menu"
-            render={() => <Menu dishes={this.props.dishes} />}
-          />
-          <Route path="/menu/:dishId" component={DishWithId} />
-          <Route exact path="/contactus" component={Contact} />
-          <Redirect to="/home" />
-        </Switch>
+        <TransitionGroup>
+          <CSSTransition
+            key={this.props.location.jey}
+            classNames="page"
+            timeout={300}
+          >
+            <Switch>
+              <Route path="/home" component={HomePage} />
+              <Route
+                path="/aboutus"
+                render={() => <About leaders={this.props.leaders} />}
+              />
+              <Route
+                exact
+                path="/menu"
+                render={() => <Menu dishes={this.props.dishes} />}
+              />
+              <Route path="/menu/:dishId" component={DishWithId} />
+              <Route exact path="/contactus" component={Contact} />
+              <Redirect to="/home" />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
         <Footer />
       </div>
     );
