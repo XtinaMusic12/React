@@ -10,21 +10,26 @@ import {
 import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
+import { Fade, Stagger } from "react-animation-components";
 
 function RenderLeader({ leader }) {
   return (
-    <div className="col-12 mt-5">
-      <Media tag="li">
-        <Media left middle>
-          <Media object src={baseUrl + leader.image} alt={leader.name} />
-        </Media>
-        <Media body className="ml-5">
-          <Media heading>{leader.name}</Media>
-          <p>{leader.designation}</p>
-          <p>{leader.description}</p>
-        </Media>
-      </Media>
-    </div>
+    <Stagger in>
+      <div className="col-12 mt-5">
+        <Fade in>
+          <Media tag="li">
+            <Media left middle>
+              <Media object src={baseUrl + leader.image} alt={leader.name} />
+            </Media>
+            <Media body className="ml-5">
+              <Media heading>{leader.name}</Media>
+              <p>{leader.designation}</p>
+              <p>{leader.description}</p>
+            </Media>
+          </Media>
+        </Fade>
+      </div>
+    </Stagger>
   );
 }
 
