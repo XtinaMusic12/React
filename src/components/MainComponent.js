@@ -15,6 +15,7 @@ import {
   fetchPromos
 } from "../redux/ActionCreators";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { actions } from "react-redux-form";
 
 const mapStateToProps = state => ({
   dishes: state.dishes,
@@ -24,9 +25,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postComment: (dishId, rating, author, comment) =>
+  addComment: (dishId, rating, author, comment) =>
     dispatch(postComment(dishId, rating, author, comment)),
-  fetchDishes: () => dispatch(fetchDishes()),
+  fetchDishes: () => {
+    dispatch(fetchDishes());
+  },
   resetFeedbackForm: () => {
     dispatch(actions.reset("feedback"));
   },
@@ -35,10 +38,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchDishes();
     this.props.fetchComments();
