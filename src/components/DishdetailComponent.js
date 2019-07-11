@@ -79,7 +79,7 @@ function RenderComments({ comments, postComment, dishId }) {
 }
 
 const DishDetail = props => {
-  console.log("dishdetail", props);
+  // console.log("dishdetail", props);
   if (props.isLoading) {
     return (
       <div className="container">
@@ -148,7 +148,6 @@ class CommentForm extends Component {
     );
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Button

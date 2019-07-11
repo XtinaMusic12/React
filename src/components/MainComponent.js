@@ -71,7 +71,7 @@ class Main extends Component {
     };
 
     const DishWithId = ({ match }) => {
-      console.log("dishwithId", this.props);
+      // console.log("dishwithId", this.props);
       return (
         <DishDetail
           dish={
